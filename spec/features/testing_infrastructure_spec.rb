@@ -12,13 +12,27 @@
 
 feature 'Enter names' do
   scenario 'submitting names' do
-    visit('/')
-    fill_in :player_1_name, with: 'Charlotte'
-    fill_in :player_2_name, with: 'Mittens'
-    click_button 'Submit'
+    sign_in_and_play
 
-    save_and_open_page # will save the web page and open the browser to display it
-    
+    # save_and_open_page # will save the web page and open the browser to display it
+
     expect(page).to have_content 'Charlotte vs. Mittens'
+  end
+end
+
+
+feature 'View hit points' do
+  scenario 'see Player 2 hit points' do
+    sign_in_and_play
+    expect(page).to have_content 'Mittens: 60HP'
+  end
+end
+
+
+feature 'Attack' do
+  scenario 'attack Player 2' do
+    sign_in_and_play
+    click_on 'Attack'
+    expect(page).to have_content 'Charlotte attacked Mittens!'
   end
 end
