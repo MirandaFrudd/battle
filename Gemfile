@@ -8,3 +8,4 @@ gem "rspec", "~> 3.11"
 gem "sinatra"
 gem 'webrick'
 gem 'capybara'
+gem 'launchy'
